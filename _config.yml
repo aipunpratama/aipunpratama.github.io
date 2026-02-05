@@ -23,16 +23,16 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://muhaipunpratama.github.io"
+url: "https://aipunpratama.github.io"
 
 github:
-  username: muhaipunpratama # change to your GitHub username
+  username: aipunpratama # change to your GitHub username
 
 twitter:
   username: aipunpratama # change to your Twitter username
 
 linkedin:
-  username: muh-aipun-pratama-6a3648260 # change to your LinkedIn username
+  username: aipunpratama # change to your LinkedIn username
 
 social:
   # Change to your full name.
@@ -42,10 +42,10 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/aipunpratama # change to your Twitter homepage
-    - https://github.com/muhaipunpratama # change to your GitHub homepage
+    - https://github.com/aipunpratama # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/muh-aipun-pratama-6a3648260/
+    - https://www.linkedin.com/in/aipunpratama
 
 # Site Verification Settings
 webmaster_verifications:
