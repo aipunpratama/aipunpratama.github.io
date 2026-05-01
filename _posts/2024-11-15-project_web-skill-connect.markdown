@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Skill Connect (JobSeeker Workly): Empowering Careers"
-date: 2026-04-28 16:00:00 +0700
+date: 2024-11-15 16:00:00 +0700
 categories: [projects, web-development]
 tags: [php, laravel, blade, mysql, full-stack, job-portal]
 author: aipunpratama
-image: assets\skill-connect-banner.jpeg
+image: assets/skill-connect-banner.jpeg
 description: "A comprehensive Job Seeker and Skill Connection platform built with Laravel, designed to bridge the gap between talented professionals and recruiters."
 ---
 

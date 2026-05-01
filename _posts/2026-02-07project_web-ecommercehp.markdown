@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HP E-Commerce: Modern Full-Stack Smartphone Store"
-date: 2026-04-28 12:00:00 +0700
+date: 2026-02-07 12:00:00 +0700
 categories: [projects, web-development]
 tags: [javascript, full-stack, e-commerce, react, nodejs, express, mongodb]
 author: aipunpratama

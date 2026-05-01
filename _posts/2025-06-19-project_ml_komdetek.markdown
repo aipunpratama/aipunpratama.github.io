@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "KomDetek: Cyberbullying Detection in TikTok Comments"
-date: 2026-04-28 14:00:00 +0700
+date: 2025-06-19 14:00:00 +0700
 categories: [projects, machine-learning]
 tags: [python, nlp, sentiment-analysis, machine-learning, cyberbullying, google-colab]
 author: aipunpratama

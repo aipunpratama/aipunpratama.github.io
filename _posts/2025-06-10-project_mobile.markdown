@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "F1 Dashboard: Transforming Formula 1 Data at Your Fingertips"
-date: 2025-06-24 17:52:00 +0700
+date: 2025-06-10 17:52:00 +0700
 categories: [projects, android-development]
 tags: [android, kotlin, java, ui-ux, api-integration, mobile-development]
 author: muhaipunpratama
