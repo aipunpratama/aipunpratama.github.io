@@ -139,13 +139,6 @@ cd f1-dashboard-android
 ./gradlew installDebug
 ```
 
-### **API Configuration**
-```kotlin
-// Add to local.properties
-ERGAST_API_KEY=your_api_key_here
-WEATHER_API_KEY=your_weather_api_key_here
-```
-
 ---
 
 ## 🌟 Future Development Plans
