@@ -1,18 +1,18 @@
 ---
 layout: post
-title: "SCARE: Scar Classification and Recognition Engine — AI untuk Deteksi Bekas Luka yang Mudah Diakses"
-date: 2026-06-10 09:00:00 +0700
+title: "SCARE: Scar Classification and Recognition Engine — Accessible AI for Scar Screening"
+date: 2026-06-10 09:05:00 +0700
 categories: [projects, machine-learning, healthtech]
-tags: [deep-learning, medical-ai, explainable-ai, tensorflow, streamlit, computer-vision, public-health]
+tags: [deep-learning, medical-ai, tensorflow, computer-vision, public-health]
 author: aipunpratama
-image: /assets/scare-banner.png
-description: "SCARE adalah prototype sistem berbasis AI yang membantu publik dan tenaga kesehatan primer membedakan Keloid dan Hypertrophic Scar melalui foto, lengkap dengan heatmap interpretabilitas."
+image: /assets/scare-banner.jpg
+description: "SCARE is a web prototype that helps the public differentiate Keloid and Hypertrophic Scars from photos — accessible from any browser."
 ---
 
 <div align="center">
 
-<a href="https://scare-cc26.streamlit.app" target="_blank">
-  <img src="https://img.shields.io/badge/Live_Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo">
+<a href="https://scare-cc-26-full-stack-front-end.vercel.app/" target="_blank">
+  <img src="https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App">
 </a>
 <a href="https://github.com/Kyyneko/SCARE-CC26" target="_blank">
   <img src="https://img.shields.io/badge/GitHub_Repo-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo">
@@ -22,124 +22,119 @@ description: "SCARE adalah prototype sistem berbasis AI yang membantu publik dan
 
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
 <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
-<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV">
-<img src="https://img.shields.io/badge/Explainable_AI-GradCAM-46B3E6?style=for-the-badge" alt="Grad-CAM">
+<img src="https://img.shields.io/badge/EfficientFormer-L1-7C4DFF?style=for-the-badge" alt="EfficientFormer-L1">
+<img src="https://img.shields.io/badge/React-TBD-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
 
 </div>
 
 ---
 
-## 📌 Ringkasan Singkat
+## 📌 Quick Summary
 
-SCARE (Scar Classification and Recognition Engine) adalah prototype web app yang memanfaatkan deep learning untuk memberikan second-opinion visual kepada publik (pasien, caregiver, maupun tenaga kesehatan primer). Pengguna dapat mengunggah foto bekas luka, menerima prediksi apakah gambar lebih cenderung *Keloid* atau *Hypertrophic Scar*, serta melihat overlay heatmap (Grad‑CAM) yang menunjukkan area yang berkontribusi pada prediksi.
+SCARE (Scar Classification and Recognition Engine) is a web prototype leveraging deep learning to provide an accessible second opinion for the public — patients, caregivers, and primary health workers — to distinguish between **Keloid** and **Hypertrophic Scar** from photos. The frontend is available at: https://scare-cc-26-full-stack-front-end.vercel.app/
 
-> Misi kami: membuat alat bantu yang mudah diakses, transparan, dan praktis — membantu masyarakat mendapatkan informasi awal sebelum berkonsultasi dengan tenaga medis resmi.
-
----
-
-## 🩺 Mengapa Ini Penting?
-
-Secara klinis, Keloid dan Hypertrophic Scar dapat terlihat mirip, terutama pada tahap awal. Kesalahan penanganan (contoh: eksisi bedah pada keloid) bisa memperparah kondisi pasien. Di banyak fasilitas primer dan layanan telemedicine, ketersediaan alat bantu objektif masih terbatas. SCARE dirancang sebagai screening awal yang cepat serta mudah digunakan oleh siapa pun.
+> Goal: provide a fast, easy-to-use screening tool that helps users make informed next steps prior to clinical consultation.
 
 ---
 
-## 🔧 Fitur Utama
+## 🩺 Why This Matters
 
-- Prediksi klasifikasi 2 kelas: **Keloid** vs **Hypertrophic Scar**  
-- Explainable AI: Grad‑CAM heatmap untuk interpretabilitas visual  
-- Pipeline pra‑proses gambar: deteksi blur, cropping fokus luka, normalisasi warna, dan augmentasi  
-- Web app responsive untuk unggah gambar dari ponsel & desktop  
-- Model tersedia dalam format Keras / .h5 / TensorFlow Lite (opsional) untuk edge deployment
+Keloids and hypertrophic scars can look very similar in early stages. Incorrect treatment (e.g., surgery on a keloid) may worsen the condition. Many primary-care settings and telemedicine platforms lack objective visual tools. SCARE aims to fill that gap by offering an easy-to-access screening service to the general public.
 
 ---
 
-## 🧭 Arsitektur & Alur Kerja (High-level)
+## 🔧 Main Features
+
+- Two-class prediction: **Keloid** vs **Hypertrophic Scar**  
+- Image preprocessing pipeline: blur detection, crop to lesion area, normalization, and augmentation  
+- Responsive web app (mobile & desktop) accepting photo uploads from smartphones  
+- Model artifacts available in Keras / .h5 (TFLite optional for edge)  
+- Note: This project currently does NOT include explainability techniques such as Grad‑CAM — interpretability features are planned for future releases.
+
+---
+
+## 🧭 Architecture & Workflow (High-level)
 
 ```
 SCARE Workflow
-├─ 1) Data Collection & Curation
-│   └─ Hapus gambar blur, crop area luka, standardisasi ukuran
-├─ 2) Preprocessing & Augmentation
-│   └─ Rotation, Flip, Zoom, Color jitter
-├─ 3) Model Training (Transfer Learning)
-│   └─ EfficientFormer-L1 (fine-tune dari ImageNet)
-├─ 4) Evaluation & Validation
-│   └─ Confusion matrix, ROC AUC, Precision/Recall
-├─ 5) Explainability
-│   └─ Grad-CAM heatmap overlay
-└─ 6) Web Deployment (Streamlit) → User upload → Inference + Heatmap
+├─ 1) Data Curation (filter blur, crop lesion)
+├─ 2) Preprocessing & Augmentation (rotation, flip, zoom, color jitter)
+├─ 3) Model Training (Transfer Learning: EfficientFormer‑L1)
+├─ 4) Evaluation (Accuracy, Precision, Recall, ROC-AUC)
+├─ 5) Model Serving (REST API)
+└─ 6) Frontend (React/Vercel) → User upload → Inference → Result
 ```
 
 ---
 
-## 🧩 Tech Stack (Inti)
+## 🧩 Core Tech Stack
 
-| Lapisan          |                                 Teknologi | Kegunaan                      |
-| ---------------- | ----------------------------------------: | ----------------------------- |
-| Bahasa           |                                    Python | Eksperimen & produksi model   |
-| Deep Learning    |                        TensorFlow / Keras | Training & inference          |
-| Backbone         |                        EfficientFormer‑L1 | Transfer learning             |
-| Computer Vision  |                             OpenCV, NumPy | Pra‑proses citra & augmentasi |
-| Interpretability |                                  Grad‑CAM | Heatmap explainability        |
-| Frontend         |                     Streamlit (prototype) | UI upload & visualisasi       |
-| Deployment       | Vercel / Render / Hugging Face (opsional) | Hosting web & model API       |
+| Layer           |                  Technology | Purpose                                 |
+| --------------- | --------------------------: | --------------------------------------- |
+| Language        |                      Python | Experimentation & model training        |
+| Deep Learning   |          TensorFlow / Keras | Training & inference                    |
+| Backbone        |          EfficientFormer‑L1 | Transfer learning                       |
+| Computer Vision |               OpenCV, NumPy | Image preprocessing                     |
+| Frontend        |  React (deployed on Vercel) | UI & public hosting                     |
+| Backend         | FastAPI / Flask (model API) | Serving model endpoints                 |
+| Storage         |     Supabase / Cloud Bucket | Artifacts & optional anonymized history |
 
 ---
 
-## 📊 Hasil Eksperimen (Ringkas)
+## 📊 Experimental Results (Summary)
 
 - Test Accuracy: **87.36%**  
 - Test Loss: **0.8986**  
 - Precision: **77.35%**  
 - ROC AUC: **0.8533**  
-- Dataset contoh: 261 train / 86 val / 87 test
+- Example dataset split: 261 train / 86 val / 87 test
 
-> Catatan: Hasil berasal dari uji internal pada dataset proyek. Performa di lapangan bergantung pada kualitas foto (pencahayaan, fokus, sudut).
+> These results are from internal experiments. Field performance depends on photo quality (lighting, focus, angle).
 
 ---
 
-## 🚀 Cara Menjalankan (Reproduksi)
+## 🚀 How to Reproduce (Short)
 
-1. Clone repo:
+1. Clone repository:
 ```bash
 git clone https://github.com/Kyyneko/SCARE-CC26.git
 cd SCARE-CC26
 ```
-
-2. Buat virtual environment & install:
+2. Follow the repository README for training and serving instructions (notebooks & scripts are included).  
+3. To run frontend locally (if developing):
 ```bash
-python -m venv venv
-# Mac/Linux
-source venv/bin/activate
+cd frontend
+npm install
+npm run dev
+```
+4. To run the model API (example FastAPI):
+```bash
+cd api
 pip install -r requirements.txt
+uvicorn app:app --reload
 ```
 
-3. Jalankan demo Streamlit:
-```bash
-streamlit run streamlit_app.py
-```
-atau buka demo publik: https://scare-cc26.streamlit.app
+---
+
+## 🔒 Privacy & Ethics
+
+- Uploaded photos are used for inference only. Do not upload sensitive personally-identifiable information.  
+- SCARE is a public-facing screening tool, **not a substitute for professional medical diagnosis**. Always consult licensed healthcare providers for medical decisions.  
+- We welcome clinical validation partnerships to ensure safety and reliability before large-scale adoption.
 
 ---
 
-## 🔒 Privasi & Etika
+## 🛠 Roadmap
 
-- Foto yang diunggah hanya digunakan untuk inference; hindari mengunggah informasi identitas sensitif tanpa izin.  
-- SCARE adalah alat bantu (decision support), **bukan substitusi diagnosis** profesional. Hasil harus dikonfirmasi oleh tenaga kesehatan berlisensi.  
-- Kami mendorong kolaborasi validasi klinis untuk memastikan keselamatan & akurasi sebelum penggunaan skala besar.
-
----
-
-## 🧭 Rencana Pengembangan Selanjutnya
-
-- Melakukan validasi klinis bersama dokter kulit  
-- Menambah dataset multi‑sumber untuk meningkatkan generalisasi  
-- Optimisasi model ke TFLite / ONNX untuk integrasi mobile ringan  
-- Fitur: histori anonim pengguna, batch inference, dan dashboard analytics
+- Clinical validation with dermatologists  
+- Expand dataset diversity to improve generalization  
+- Optimize and release TFLite / ONNX models for edge deployment  
+- Add interpretability (e.g., Grad‑CAM or other explainability methods)  
+- Implement anonymized history and analytics features
 
 ---
 
-## 👥 Tim Pengembang (Coding Camp 2026 — DBS Foundation)
+## 👥 Project Team (Coding Camp 2026 — DBS Foundation)
 
 - Mahendra Kirana M.B — Data Science  
 - Muh. Aipun Pratama — Data Science (author)  
@@ -150,23 +145,22 @@ atau buka demo publik: https://scare-cc26.streamlit.app
 
 ---
 
-## 🔗 Sumber & Akses
+## 🔗 Links & Access
 
-- Live Demo: https://scare-cc26.streamlit.app  
-- Repo GitHub: https://github.com/Kyyneko/SCARE-CC26  
-- Model & artifacts: lihat folder Saved Models di repo atau link drive jika tersedia
-
----
-
-## ✉️ Ingin Berkolaborasi atau Memberi Masukan?
-
-Kami terbuka untuk:
-- Uji coba bersama komunitas/klinik  
-- Masukan dari tenaga medis terkait interpretabilitas heatmap  
-- Kontribusi dataset atau kode untuk meningkatkan robustness
-
-Silakan buka issue atau pull request di GitHub, atau hubungi via profil GitHub: https://github.com/Kyyneko
+- Live App (frontend): https://scare-cc-26-full-stack-front-end.vercel.app/  
+- GitHub Repo: https://github.com/Kyyneko/SCARE-CC26
 
 ---
 
-<sub>Proyek ini merupakan Capstone Project Coding Camp 2026 — tujuan utamanya menghadirkan solusi AI yang mudah diakses oleh masyarakat luas guna membantu deteksi awal masalah kesehatan kulit.</sub>
+## ✉️ Collaborate or Give Feedback
+
+We are open to:
+- Field trials with clinics / community groups  
+- Feedback from medical professionals on model validity  
+- Contributions to datasets or code for robustness improvements
+
+Create an issue or pull request on GitHub, or contact us via the repository profile: https://github.com/Kyyneko
+
+---
+
+<sub>This project is a Capstone Project from Coding Camp 2026 — the aim is to provide an accessible AI screening tool that helps communities detect potential skin scar issues early.</sub>
